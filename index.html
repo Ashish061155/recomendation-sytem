@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSuggest - AI Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-bullseye"></i>
+                    SmartSuggest
+                </h1>
+                <p class="tagline">AI-Powered Recommendation System</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Configuration Panel -->
+            <aside class="sidebar">
+                <div class="config-panel">
+                    <h3><i class="fas fa-cog"></i> Configuration</h3>
+                    
+                    <div class="form-group">
+                        <label for="algorithm">Recommendation Algorithm</label>
+                        <select id="algorithm" class="form-control">
+                            <option value="content">Content-Based</option>
+                            <option value="collaborative">Collaborative Filtering</option>
+                            <option value="hybrid">Hybrid Approach</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numRecommendations">Number of Recommendations</label>
+                        <input type="range" id="numRecommendations" min="5" max="20" value="10" class="slider">
+                        <span id="numValue" class="slider-value">10</span>
+                    </div>
+
+                    <div class="algorithm-info" id="algorithmInfo">
+                        <h4>Content-Based Filtering</h4>
+                        <ul>
+                            <li>Analyzes movie genres and features</li>
+                            <li>Uses TF-IDF vectorization</li>
+                            <li>Calculates cosine similarity</li>
+                            <li>Recommends similar movies</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Panel -->
+            <div class="main-panel">
+                <!-- Search Section -->
+                <section class="search-section">
+                    <h2>Get Your Personalized Recommendations</h2>
+                    
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search for movies..." class="search-input">
+                        </div>
+                    </div>
+
+                    <div class="movie-selection">
+                        <h3>Select Your Favorite Movies</h3>
+                        <div id="movieList" class="movie-grid">
+                            <!-- Movies will be populated here -->
+                        </div>
+                        
+                        <div class="selected-movies">
+                            <h4>Selected Movies:</h4>
+                            <div id="selectedMovies" class="selected-items">
+                                <p class="no-selection">No movies selected yet</p>
+                            </div>
+                        </div>
+
+                        <button id="getRecommendations" class="btn-primary" disabled>
+                            <i class="fas fa-magic"></i>
+                            Get Recommendations
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section" id="resultsSection" style="display: none;">
+                    <h2><i class="fas fa-star"></i> Your Recommendations</h2>
+                    <div id="recommendationsList" class="recommendations-grid">
+                        <!-- Recommendations will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Loading Spinner -->
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating recommendations...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-film"></i>
+                    <div class="stat-content">
+                        <h3 id="totalMovies">100</h3>
+                        <p>Total Movies</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-content">
+                        <h3 id="totalRatings">10,000</h3>
+                        <p>Total Ratings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-content">
+                        <h3 id="totalUsers">1,000</h3>
+                        <p>Unique Users</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
